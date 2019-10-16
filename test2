@@ -1,5 +1,15 @@
- CREATE ROLE 王博;
-GRANT connect,resource,CREATE VIEW TO con_res_view;
-CREATE USER 王博2 IDENTIFIED BY 123 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
-ALTER USER 王博2 QUOTA 50M ON users;
- GRANT 王博 TO 王博2;
+CREATE ROLE yuyuGPY;
+GRANT connect,resource,CREATE VIEW TO yuyuGPY;
+CREATE USER yuyu IDENTIFIED BY 123 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
+ALTER USER yuyu QUOTA 50M ON users;
+GRANT yuyuGPY TO yuyu;
+
+CREATE TABLE mytable (id number,name varchar(50));
+INSERT INTO mytable(id,name)VALUES(1,'zhang');
+INSERT INTO mytable(id,name)VALUES (2,'wang');
+ CREATE VIEW myview AS SELECT name FROM mytable;
+ SELECT * FROM myview;
+
+
+
+SELECT * FROM yuyu.mytable;
