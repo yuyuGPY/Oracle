@@ -1,12 +1,12 @@
 #实验三
 
 ##1表空间创建
-ALTER USER yuyu QUOTA UNLIMITED ON USERS;
+```ALTER USER yuyu QUOTA UNLIMITED ON USERS;
 ALTER USER yuyu QUOTA UNLIMITED ON USERS02;
-ALTER USER yuyu QUOTA UNLIMITED ON USERS03;
+ALTER USER yuyu QUOTA UNLIMITED ON USERS03;```
 
 ##2创建订单表
-declare
+```declare
       num   number;
 begin
       select count(1) into num from user_tables where TABLE_NAME = 'ORDER_DETAILS';
@@ -134,10 +134,10 @@ PARTITION BY RANGE (ORDER_DATE)
     BUFFER_POOL DEFAULT
   )
   NOCOMPRESS NO INMEMORY
-);
+);```
 
 ##3创建order_details
-CREATE TABLE order_details
+```CREATE TABLE order_details
 (
 id NUMBER(10, 0) NOT NULL
 , order_id NUMBER(10, 0) NOT NULL
@@ -204,10 +204,10 @@ ALTER USER "TEACHER" QUOTA UNLIMITED ON USERS03;
 end;
 /
 select count(*) from orders;
-select count(*) from order_details;
+select count(*) from order_details;```
 
 ##4查询语句执行
-set autotrace on
+```set autotrace on
 
 select * from yuyu.orders where order_date
 between to_date('2017-1-1','yyyy-mm-dd') and to_date('2018-6-1','yyyy-mm-dd');
@@ -216,7 +216,7 @@ select a.ORDER_ID,a.CUSTOMER_NAME,
 b.product_name,b.product_num,b.product_price
 from yuyu.orders a,yuyu.order_details b where
 a.ORDER_ID=b.order_id and
-a.order_date between to_date('2017-1-1','yyyy-mm-dd') and to_date('2018-6-1','yyyy-mm-dd');
+a.order_date between to_date('2017-1-1','yyyy-mm-dd') and to_date('2018-6-1','yyyy-mm-dd');```
 
 ##分析
 分区优点： 1、改善查询性能：对分区对象的查询可以仅搜索自己关心的分区，提高检索速度。
